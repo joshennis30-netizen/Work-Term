@@ -6,47 +6,49 @@ export const resultsType = defineType({
     type: 'document',
     fields: [
         defineField({
+            name: 'Name',
+            title: 'Name',
+            type: 'string',
+        }),
+        defineField({
             name: 'category',
             type: 'string',
         }),
         defineField({
-            name: 'placement',
+            name: 'Placement',
+            title: 'Placement',
             type: 'number',
         }),
         defineField({
-            name: 'name',
-            type: 'string',
-        }),
-        defineField({
-            name: 'Bib',
+            name: 'bib',
             type: 'number',
         }),
         defineField({
-            name: 'Lap_1',
+            name: 'lap_1',
             type: 'string',
         }),
         defineField({
-            name: 'Lap_2',
+            name: 'lap_2',
             type: 'string',
         }),
         defineField({
-            name: 'Lap_3',
+            name: 'lap_3',
             type: 'string',
         }),
         defineField({
-            name: 'Lap_4',
+            name: 'lap_4',
             type: 'string',
         }),
         defineField({
-            name: 'Lap_5',
+            name: 'lap_5',
             type: 'string',
         }),
         defineField({
-            name: 'Lap_6',
+            name: 'lap_6',
             type: 'string',
         }),
         defineField({
-            name: 'Total',
+            name: 'total',
             type: 'string',
         }),
     ],
