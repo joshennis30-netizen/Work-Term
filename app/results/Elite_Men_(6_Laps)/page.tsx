@@ -16,8 +16,11 @@ const RESULT_QUERY = defineQuery(`*[_type == "results" && category == "Elite Men
 
 var results = await client.fetch(RESULT_QUERY)
 
-results = JSON.stringify(results, null, 2).replace(/[{}]/g, '');
-results = results.replace(/[\[\]"]+/g, '');
+for(let i=0; i<results.length; i++){
+    results[i] = Object.values(results[i]);
+    results[i] = JSON.stringify(results[i], null, 10).replace(/[\[\]",]+/g, '');
+    results[i] = <div>{results[i]}</div>
+}
 
 export default function Results() {
     return(

@@ -1,10 +1,15 @@
 import { client } from '@/sanity/lib/client'
 import { defineQuery } from 'next-sanity'
 
-const RESULT_QUERY = defineQuery(`*[_type == "results" && category == "1 Loop Open (1 Lap)"]{
+const RESULT_QUERY = defineQuery(`*[_type == "results" && category == "Elite Women (5 Laps)"]{
     Placement,
     Name,
     bib,
+    lap_1,
+    lap_2,
+    lap_3,
+    lap_4,
+    lap_5,
     total
     }|order(Placement asc)`)
 
