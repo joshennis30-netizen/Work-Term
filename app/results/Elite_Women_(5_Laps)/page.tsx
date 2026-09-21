@@ -17,8 +17,9 @@ var results = await client.fetch(RESULT_QUERY)
 
 for(let i=0; i<results.length; i++){
     results[i] = Object.values(results[i]);
+    results[i] = JSON.stringify(results[i], null, 10).replace(/[\[\]",]+/g, '');
+    results[i] = <div>{results[i]}</div>
 }
-results = JSON.stringify(results, null, 4).replace(/[\[\]"]+/g, '');
 
 export default function Results() {
     return(

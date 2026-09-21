@@ -8,8 +8,9 @@ var sponsors = await client.fetch(SPONSOR_QUERY)
 
 for(let i=0; i<sponsors.length; i++){
     sponsors[i] = Object.values(sponsors[i]);
+    sponsors[i] = JSON.stringify(sponsors[i], null, 10).replace(/[\[\]",]+/g, '');
+    sponsors[i] = <div>{sponsors[i]}</div>
 }
-sponsors = JSON.stringify(sponsors, null, 4).replace(/[\[\]"]+/g, '');
 
 export default function Sponsors() {
     return (
