@@ -2,7 +2,7 @@ import { client } from '@/sanity/lib/client';
 import { Image } from 'next-sanity/image';
 import { defineQuery } from 'next-sanity'
 
-const PHOTO_QUERY = defineQuery(`*[_type == "photos"]{
+const PHOTO_QUERY = defineQuery(`*[_type == "photos" && year == 2026]{
     "imageUrl": image.asset->url}`)
 
 var photos = await client.fetch(PHOTO_QUERY)

@@ -9,5 +9,9 @@ export const photosType = defineType({
             name: 'image',
             type: 'image',
         }),
+        defineField({
+            name: 'year',
+            type: 'number',
+        }),
     ],
 })

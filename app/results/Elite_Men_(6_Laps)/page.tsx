@@ -1,8 +1,7 @@
 import { client } from '@/sanity/lib/client'
 import { defineQuery } from 'next-sanity'
 
-const RESULT_QUERY = defineQuery(`*[_type == "results" && category == "Elite Men (6 Laps)"]{
-    Placement,
+const RESULT_QUERY = defineQuery(`*[_type == "results" && category == "Elite Men (6 Laps)" && year == 2026]{
     Name,
     bib,
     lap_1,

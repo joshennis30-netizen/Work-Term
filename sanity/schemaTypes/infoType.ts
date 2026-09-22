@@ -6,24 +6,24 @@ export const infoType = defineType({
     type: 'document',
     fields: [
         defineField({
-            name: 'what',
-            type: 'text',
+            name: 'What',
+            type: 'string',
         }),
         defineField({
-            name: 'when',
-            type: 'text',
+            name: 'When',
+            type: 'string',
         }),
         defineField({
-            name: 'where',
-            type: 'text',
+            name: 'Where',
+            type: 'string',
         }),
         defineField({
             name: 'how_to_take_part',
-            type: 'text',
+            type: 'string',
         }),
         defineField({
             name: 'additional_info',
-            type: 'text',
+            type: 'string',
         }),
     ]
 })

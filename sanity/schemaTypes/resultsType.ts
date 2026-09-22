@@ -51,5 +51,9 @@ export const resultsType = defineType({
             name: 'total',
             type: 'string',
         }),
+        defineField({
+            name: 'year',
+            type: 'number',
+        }),
     ],
 })
