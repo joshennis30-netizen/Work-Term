@@ -1,7 +1,9 @@
 export default function Archive() {
     return (
         <div className="text-center">
-            Archive
+            <a href="/archive2025">2025</a>
+
+            
         </div>
     )
 }

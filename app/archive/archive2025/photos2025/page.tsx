@@ -1,7 +1,7 @@
 import { client } from '@/sanity/lib/client';
 import { defineQuery } from 'next-sanity'
 
-const PHOTO_QUERY = defineQuery(`*[_type == "photos" && year == 2026]{
+const PHOTO_QUERY = defineQuery(`*[_type == "photos" && year == 2025]{
     "imageUrl": image.asset->url}`)
 
 var photos = await client.fetch(PHOTO_QUERY)
@@ -14,7 +14,7 @@ for(let i=0; i<photos.length; i++){
 
 console.log(photos);
 
-export default function Photos({ image }: {image: String}) {
+export default function Photos2025({ image }: {image: String}) {
     return (
         <div>
             {photos}

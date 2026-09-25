@@ -19,7 +19,7 @@ export const infoType = defineType({
         }),
         defineField({
             name: 'how_to_take_part',
-            type: 'string',
+            type: 'text',
         }),
         defineField({
             name: 'additional_info',
