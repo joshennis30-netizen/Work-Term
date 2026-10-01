@@ -16,8 +16,10 @@ console.log(photos);
 
 export default function Photos2025({ image }: {image: String}) {
     return (
-        <div>
-            {photos}
+        <div className="gallery">
+            <div className="gallery-item">
+                {photos}
+            </div>
         </div>
     )
 }

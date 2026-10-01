@@ -38,9 +38,8 @@ const INFO_QUERY_ADD = defineQuery(`*[_type == "info"]{
   }|order(_createdAt asc)`)
 var info_add = await client.fetch(INFO_QUERY_ADD)
 info_add[0] = Object.values(info_add[0]);
-info_add = JSON.stringify(info_add, null, 10).replace(/[\[\]",{}]+/g, '');
+info_add = JSON.stringify(info_add, null, 10).replace(/[\[\]"{}]+/g, '');
 info_add = <div>{info_add}</div>
-
 
 export default function Home() {
   return (

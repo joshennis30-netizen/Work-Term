@@ -1,20 +1,17 @@
 import {defineField, defineType} from 'sanity'
 
-export const photosType = defineType({
-    name: 'photos',
-    title: 'Photos',
+export const bannerType = defineType({
+    name: 'banner',
+    title: 'Banner',
     type: 'document',
     fields: [
         defineField({
             name: 'image',
+            description: 'must be 1980x1020 pixels',
             type: 'image',
             options: {
                 hotspot: true,
             },
-        }),
-        defineField({
-            name: 'year',
-            type: 'number',
         }),
     ],
 })

@@ -1,8 +1,45 @@
 @import "tailwindcss";
 
 header {
-    background-color: grey;
+    background-color: rgb(88, 88, 88);
+    text-align: center;
 }
 .center {
     text-align: center;
+}
+thead {
+    background-color: rgb(127, 255, 255);
+}
+tr:nth-child(even) {
+    background-color: rgb(127, 255, 255);
+}
+div.text-center {
+    border: outset;
+    border-color: black;
+}
+.image-container {
+    min-height: 200px;
+    max-height: 300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+}
+div.newsContainer {
+    width: 100%;
+    overflow: auto;
+}
+div.newsContainer article {
+    width: 33%;
+    float: left;
+}
+div.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+div.gallery-item {
+    margin: 5px;
+    border: 1px solid #ccc;
+    width: 180px;
 }
