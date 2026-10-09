@@ -1,27 +1,39 @@
 @import "tailwindcss";
 
 header {
-    background-color: rgb(88, 88, 88);
-    text-align: center;
+    background-color: rgb(51, 51, 51);
+    min-height: 50px;
+    justify-content: right;
+    display: flex;
+    font-family: 'Sans-serif', 'Arial', sans-serif;
+}
+body {
+    min-height: 70vh;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
 }
 footer {
-    background-color: rgb(88, 88, 88)
+    position: fixed;
+    bottom: 0px;
+    left: 0px;
+    width: 100%;
+    min-height: 50px;
+    background-color: rgb(51, 51, 51);
+    margin-top: auto;
+    border-top: 1px solid black;
 }
 .center {
     text-align: center;
 }
 thead {
-    background-color: rgb(127, 255, 255);
+    background-color: rgb(37, 247, 247);
 }
 tr {
     border-bottom: 1px solid black;
 }
 tr:nth-child(even) {
-    background-color: rgb(127, 255, 255);
-}
-div.text-center {
-    border: outset;
-    border-color: black;
+    background-color: rgb(37, 247, 247);
 }
 .image-container {
     min-height: 250px;
@@ -48,4 +60,29 @@ div.gallery-item {
     margin: 5px;
     border: 1px solid #ccc;
     width: 180px;
+}
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: rgb(50, 50, 50);
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    border-top: 1px solid rgb(0, 102, 255);
+}
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+footer .footer-links {
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-family: 'Sans-serif', 'Arial', sans-serif;
 }

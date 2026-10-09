@@ -7,7 +7,6 @@ export const bannerType = defineType({
     fields: [
         defineField({
             name: 'image',
-            description: 'must be 1980x1020 pixels',
             type: 'image',
             options: {
                 hotspot: true,
