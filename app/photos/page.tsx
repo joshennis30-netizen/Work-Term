@@ -7,7 +7,7 @@ var photos = await client.fetch(PHOTO_QUERY)
 for(let i=0; i<photos.length; i++){
     photos[i] = Object.values(photos[i]);
     photos[i] = JSON.stringify(photos[i]).replace(/[\[\]{}",]+/g, '');
-    photos[i] = <img src={photos[i]} alt="photo" width={400} height={300}/>
+    photos[i] = <img key={i} src={photos[i]} alt="photo" width={400} height={300}/>
 }
 
 export default function Photos({ image }: {image: String}) {
