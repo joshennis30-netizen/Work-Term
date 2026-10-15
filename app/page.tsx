@@ -43,7 +43,7 @@ info_add = <p style={{ minHeight: '5vh'}}>{info_add}</p>
 
 export default function Home() {
   return (
-    <div className="text-center" style={{ minHeight: '70vh', fontSize: '18px', fontFamily: 'Arial'}}>
+    <div className="text-center" style={{ minHeight: '60vh', fontSize: '18px', fontFamily: 'Arial', marginTop: '40px'}}>
       {info_what}
       {info_when}
       {info_where}

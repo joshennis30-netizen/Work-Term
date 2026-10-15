@@ -9,5 +9,9 @@ export const sponsorsType = defineType({
             name: 'name',
             type: 'string',
         }),
+        defineField({
+            name: 'website',
+            type: 'string',
+        })
     ],
 })

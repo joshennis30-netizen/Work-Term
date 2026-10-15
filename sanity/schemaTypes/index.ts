@@ -6,8 +6,8 @@ import {resultsType} from './resultsType'
 import {photosType} from './photosType'
 import {sponsorsType} from './sponsorsType'
 import {volunteersType} from './volunteersType'
-import {bannerType} from './bannerType'
+import {backgroundType} from './backgroundType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [infoType, newsType, resultsType, photosType, sponsorsType, volunteersType, bannerType],
+  types: [infoType, newsType, resultsType, photosType, sponsorsType, volunteersType, backgroundType],
 }

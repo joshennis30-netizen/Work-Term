@@ -4,12 +4,12 @@ import "./globals.css";
 
 import { client } from '@/sanity/lib/client';
 import { defineQuery } from 'next-sanity'
-const BANNER_QUERY = defineQuery(`*[_type == "banner"]{
+const BACKGROUND_QUERY = defineQuery(`*[_type == "background"]{
     "imageUrl": image.asset->url}`)
-var banner = await client.fetch(BANNER_QUERY)
-for(let i=0; i<banner.length; i++){
-    banner[i] = Object.values(banner[i]);
-    banner[i] = JSON.stringify(banner[i]).replace(/[\[\]{}",]+/g, '');
+var background = await client.fetch(BACKGROUND_QUERY)
+for(let i=0; i<background.length; i++){
+    background[i] = Object.values(background[i]);
+    background[i] = JSON.stringify(background[i]).replace(/[\[\]{}",]+/g, '');
 }
 
 const geistSans = Geist({
@@ -30,9 +30,10 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html lang="en" className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col" style={{ backgroundImage: `url(${background})`, backgroundSize: 'cover', backgroundPosition: 'center', backgroundRepeat: 'no-repeat',
+         backgroundBlendMode: 'lighten', backgroundColor: 'rgba(255, 255, 255, 0.4)' }}>
         <header className="border-white/10 px-6">
-          <nav className="flex space-x-6" style={{ marginTop: '10px'}}>
+          <nav className="flex space-x-6" style={{ marginTop: '12px'}}>
             <a href="/" style={{color: 'white'}}>Home</a>
             <a href="/announcements" style={{color: 'white'}}>News</a>
             <div className="dropdown">
@@ -49,19 +50,22 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
               </div>
             </div>
             <a href="/photos" style={{color: 'white'}}>Photos</a>
-            <a href="/archive" style={{color: 'white'}}>Previous Years</a>
+            <div className="dropdown">
+              <button className="dropbtn" style={{color: 'white'}}>Previous Years</button>
+              <div className="dropdown-content">
+                <a href="/archive/archive2025" style={{color: 'white'}}>2025</a>
+              </div>
+            </div>
             <a href="/sponsors" style={{color: 'white'}}>Sponsors</a>
             <a href="/volunteers" style={{color: 'white'}}>Volunteers</a>
             <a href="/studio" style={{color: 'white'}}>Sanity</a>
           </nav>
         </header>
-        <div className="image-container" style={{backgroundImage: `url(${banner})`}}></div>
         {children}
         <footer>
           <div className="footer-links">
             <a href="https://www.facebook.com/BellIslandRoadRace" style={{color: 'white'}}>Facebook</a>
           </div>
-          <h3 style={{ textAlign: 'right', color: 'white', marginBottom: '5px', marginRight: '10px'}}>2026 - Designed by Josh Ennis</h3>
         </footer>
       </body>
     </html>
