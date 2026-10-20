@@ -8,10 +8,12 @@ export const newsType = defineType({
         defineField({
             name: 'news',
             type: 'text',
+            validation: Rule => Rule.required()
         }),
         defineField({
             name: 'date',
-            type: 'datetime',
+            type: 'date',
+            validation: Rule => Rule.required()
         })
     ]
 })

@@ -26,6 +26,10 @@ footer {
 .center {
     text-align: center;
 }
+table {
+    width: 100%;
+    table-layout: auto;
+}
 thead {
     background-color: rgb(255, 255, 255);
 }
@@ -33,7 +37,14 @@ tbody tr:nth-child(even) {
     background-color: rgb(255, 255, 255);
 }
 tbody tr:nth-child(odd) {
-    background-color: rgb(139, 139, 139);
+    background-color: rgb(124, 159, 175);
+}
+div.raceButtons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    background-color: rgb(87, 86, 86);
+    color: rgb(255, 255, 255);
 }
 .image-container {
     min-height: 250px;

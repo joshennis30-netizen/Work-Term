@@ -7,7 +7,6 @@ const VOLUNTEER_QUERY = defineQuery(`*[_type == "volunteers"]{
 var volunteers = await client.fetch(VOLUNTEER_QUERY)
 for(let i=0; i<volunteers.length; i++){
     volunteers[i] = Object.values(volunteers[i]);
-    volunteers[i] = JSON.stringify(volunteers[i], null, 10).replace(/[\[\]",]+/g, '');
     volunteers[i] = <tr><td className="center">{volunteers[i]}</td></tr>
 }
 
