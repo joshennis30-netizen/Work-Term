@@ -19,6 +19,7 @@ function setRace(selectedRace: string) {
     race = selectedRace;
     fetchResults(race);
     var tableBody = document.getElementById("tBody") as HTMLTableElement;
+    var tableHead = document.getElementById("tHead") as HTMLTableElement;
     var tRows = tableBody.querySelectorAll('tbody tr').length;
     if (tRows != 0){
         for (let x=0; x<=tRows - 1;){
@@ -26,6 +27,7 @@ function setRace(selectedRace: string) {
         tRows = tableBody.querySelectorAll('tbody tr').length;
         }
     }
+    tableHead.deleteRow(-1);
 }
 
 async function fetchResults(race: string) {
@@ -51,7 +53,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap1 = await client.fetch(LAP1_QUERY)
     for(let i=0; i<lap1.length; i++){
-        lap1[i] = JSON.stringify(lap1[i].lap_1, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap1[i].lap_1 != null){
+            lap1[i] = JSON.stringify(lap1[i].lap_1, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const LAP2_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         lap_2,
@@ -59,7 +63,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap2 = await client.fetch(LAP2_QUERY)
     for(let i=0; i<lap2.length; i++){
-        lap2[i] = JSON.stringify(lap2[i].lap_2, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap2[i].lap_2 != null){
+            lap2[i] = JSON.stringify(lap2[i].lap_2, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const LAP3_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         lap_3,
@@ -67,7 +73,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap3 = await client.fetch(LAP3_QUERY)
     for(let i=0; i<lap3.length; i++){
-        lap3[i] = JSON.stringify(lap3[i].lap_3, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap3[i].lap_3 != null){
+            lap3[i] = JSON.stringify(lap3[i].lap_3, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const LAP4_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         lap_4,
@@ -75,7 +83,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap4 = await client.fetch(LAP4_QUERY)
     for(let i=0; i<lap4.length; i++){
-        lap4[i] = JSON.stringify(lap4[i].lap_4, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap4[i].lap_4 != null){
+            lap4[i] = JSON.stringify(lap4[i].lap_4, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const LAP5_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         lap_5,
@@ -83,7 +93,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap5 = await client.fetch(LAP5_QUERY)
     for(let i=0; i<lap5.length; i++){
-        lap5[i] = JSON.stringify(lap5[i].lap_5, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap5[i].lap_5 != null){
+            lap5[i] = JSON.stringify(lap5[i].lap_5, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const LAP6_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         lap_6,
@@ -91,7 +103,9 @@ async function fetchResults(race: string) {
         }|order(Placement asc)`)
     var lap6 = await client.fetch(LAP6_QUERY)
     for(let i=0; i<lap6.length; i++){
-        lap6[i] = JSON.stringify(lap6[i].lap_6, null, 5).replace(/[\[\]",]+/g, '');
+        if (lap6[i].lap_6 != null){
+            lap6[i] = JSON.stringify(lap6[i].lap_6, null, 5).replace(/[\[\]",]+/g, '');
+        }
     }
     const TOTAL_QUERY = defineQuery(`*[_type == "results" && category == "${race}" && year == 2026]{
         total,
@@ -102,7 +116,7 @@ async function fetchResults(race: string) {
         total[i] = JSON.stringify(total[i].total, null, 5).replace(/[\[\]",]+/g, '');
     }
     for(let i=0; i<name.length; i++){
-        results[i] = <tr key={i}><td className="center">{name[i]}</td><td className="center">{bib[i]}</td><td className="center">{lap1[i]}</td>
+        results[i] = <tr key={i} id="tRow"><td className="center">{name[i]}</td><td className="center">{bib[i]}</td><td className="center">{lap1[i]}</td>
         <td className="center">{lap2[i]}</td><td className="center">{lap3[i]}</td><td className="center">{lap4[i]}</td>
         <td className="center">{lap5[i]}</td><td className="center">{lap6[i]}</td><td className="center">{total[i]}</td></tr>
     }
@@ -114,8 +128,75 @@ async function fetchResults(race: string) {
         newCell.innerHTML = results[i].props.children[j].props.children;
         }
     }
-    console.log(results);
-    //results.length = 0;
+    var tableHead = document.getElementById("tHead") as HTMLTableElement;
+    var row = tableHead.insertRow(0);
+    var nameCell = row.insertCell(0);
+    nameCell.innerHTML = "Name";
+    var bibCell = row.insertCell(1);
+    bibCell.innerHTML = "Bib";
+    var totalCell = row.insertCell(2);
+    totalCell.innerHTML = "Total";
+    for(let i=0; i<results.length; i++){
+        if (typeof lap6[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(7);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 6"
+            break;
+        }
+    }
+    for(let i=0; i<results.length; i++){
+        if (typeof lap5[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(6);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 5"
+            break;
+        }
+    }
+    for(let i=0; i<results.length; i++){
+        if (typeof lap4[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(5);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 4"
+            break;
+        }
+    }
+    for(let i=0; i<results.length; i++){
+        if (typeof lap3[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(4);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 3"
+            break;
+        }
+    }
+    for(let i=0; i<results.length; i++){
+        if (typeof lap2[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(3);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 2"
+            break;
+        }
+    }
+    for(let i=0; i<results.length; i++){
+        if (typeof lap1[i] !== 'string'){
+            var tRows = tableBody.rows[i];
+            tRows.deleteCell(2);
+        } else {
+            var lapCell = row.insertCell(2);
+            lapCell.innerHTML = "Lap 1"
+            break;
+        }
+    }
+    results.length = 0;
 }
 
 function Results(results: any[]) {
@@ -123,10 +204,7 @@ function Results(results: any[]) {
         <div>
             <div className="raceButtons">{category}</div>
             <table id="table">
-                <thead id="tHead">
-                    <tr><th>Name</th><th>Bib</th><th>Lap 1</th><th>Lap 2</th><th>Lap 3</th><th>Lap 4</th>
-                    <th>Lap 5</th><th>Lap 6</th><th>Total</th></tr>
-                </thead>
+                <thead id="tHead" className="center"/>
                 <tbody id="tBody" className="center"/> 
             </table>
         </div>
