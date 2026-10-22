@@ -199,7 +199,7 @@ async function fetchResults(race: string) {
     results.length = 0;
 }
 
-function Results(results: any[]) {
+export default function Results(results: any[]) {
     return(
         <div>
             <div className="raceButtons">{category}</div>
@@ -210,5 +210,3 @@ function Results(results: any[]) {
         </div>
     );
 }
-
-export default Results;

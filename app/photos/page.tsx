@@ -1,4 +1,3 @@
-'use client';
 import { client } from '@/sanity/lib/client';
 import { defineQuery } from 'next-sanity'
 
@@ -8,7 +7,7 @@ var photos = await client.fetch(PHOTO_QUERY)
 for(let i=0; i<photos.length; i++){
     photos[i] = Object.values(photos[i]);
     photos[i] = JSON.stringify(photos[i]).replace(/[\[\]{}",]+/g, '');
-    photos[i] = <div key={i} className="gallery-item"><img src={photos[i]} alt="photo" width={400} height={300} onClick={() => expandImg()}/></div>
+    photos[i] = <div key={i} className="gallery-item"><img src={photos[i]} alt="photo" width={400} height={300}/></div>
 }
 
 function expandImg(){
