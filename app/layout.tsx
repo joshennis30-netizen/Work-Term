@@ -46,7 +46,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             </div>
             <a href="/sponsors" style={{color: 'white'}}>Sponsors</a>
             <a href="/volunteers" style={{color: 'white'}}>Volunteers</a>
-            <a href="/studio" style={{color: 'white'}}>Sanity</a>
           </nav>
         </header>
         {children}

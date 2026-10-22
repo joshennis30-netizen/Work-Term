@@ -27,7 +27,6 @@ footer {
     text-align: center;
 }
 table {
-    margin-top: 25px;
     width: 100%;
     table-layout: auto;
 }
@@ -136,4 +135,5 @@ div.archive {
     display: flex;
     justify-content: center;
     gap: 10px;
+    background-Color: #ffffffa0;
 }

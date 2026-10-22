@@ -3,6 +3,7 @@ import {defineField, defineType} from 'sanity'
 export const resultsType = defineType({
     name: 'results',
     title: 'Results',
+    description: 'Times with no information can be put as - .',
     type: 'document',
     fields: [
         defineField({

@@ -203,7 +203,7 @@ function Results(results: any[]) {
     return(
         <div>
             <div className="raceButtons">{category}</div>
-            <table id="table">
+            <table id="table" style={{ marginTop: 25}}>
                 <thead id="tHead" className="center"/>
                 <tbody id="tBody" className="center"/> 
             </table>

@@ -41,6 +41,5 @@ export default function Photos({ image }: {image: String}) {
                 <img className="modal-content" id="img01"/>
             </div>
         </div>
-        
     )
 }
